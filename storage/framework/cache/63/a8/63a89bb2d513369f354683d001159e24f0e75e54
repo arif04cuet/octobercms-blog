@@ -1,0 +1,15 @@
+1545380460a:1:{s:10:"footer.htm";a:6:{s:8:"fileName";s:10:"footer.htm";s:7:"content";s:115:"[viewBag]
+==
+<div class="footer">
+    <div class="container">
+    
+        @footer
+        
+    </div>
+</div>";s:5:"mtime";i:1545371888;s:6:"markup";s:102:"<div class="footer">
+    <div class="container">
+    
+        @footer
+        
+    </div>
+</div>";s:4:"code";N;s:7:"viewBag";a:0:{}}}

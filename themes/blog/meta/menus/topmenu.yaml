@@ -1,0 +1,37 @@
+name: TopMenu
+items:
+    -
+        title: Home
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: Home
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'About Us'
+        nesting: '0'
+        type: static-page
+        url: ''
+        code: ''
+        reference: about-us
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Contact Us'
+        type: cms-page
+        code: ''
+        reference: contact-us
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'

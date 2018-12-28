@@ -1,0 +1,8 @@
+1545575660a:1:{s:12:"about-us.htm";a:7:{s:8:"fileName";s:12:"about-us.htm";s:7:"content";s:178:"[viewBag]
+title = "About Us"
+url = "/about-us"
+layout = "default"
+is_hidden = 0
+navigation_hidden = 0
+==
+<p>this is about us page. this page is generreted without staic page.</p>";s:5:"mtime";i:1545378089;s:6:"markup";s:73:"<p>this is about us page. this page is generreted without staic page.</p>";s:4:"code";N;s:7:"viewBag";a:5:{s:5:"title";s:8:"About Us";s:3:"url";s:9:"/about-us";s:6:"layout";s:7:"default";s:9:"is_hidden";s:1:"0";s:17:"navigation_hidden";s:1:"0";}s:12:"parsedMarkup";s:73:"<p>this is about us page. this page is generreted without staic page.</p>";}}

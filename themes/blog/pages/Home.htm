@@ -1,0 +1,102 @@
+title = "Posts List"
+url = "/"
+layout = "default"
+is_hidden = 0
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "Home"
+postPage = "single-post"
+
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = 0
+categoryPage = "post-categories"
+
+[searchInput]
+useAutoComplete = 1
+autoCompleteResultCount = 5
+showProviderBadge = 1
+searchPage = "search-result.htm"
+==
+<div class="row">
+    <div class="col-md-9">
+
+
+
+
+        {% set posts = blogPosts.posts %}
+        <ul class="post-list">
+            {% for post in posts %}
+            <li>
+                <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+
+                <p class="info">
+                    Posted
+                    {% if post.categories.count %} in {% endif %}
+                    {% for category in post.categories %}
+                    <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                    on {{ post.published_at|date('M d, Y') }}
+                </p>
+
+                <p class="excerpt">{{ post.summary|raw }}</p>
+            </li>
+            {% else %}
+            <li class="no-data">{{ noPostsMessage }}</li>
+            {% endfor %}
+        </ul>
+
+        {% if posts.lastPage > 1 %}
+        <ul class="pagination">
+            {% if posts.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage-1) }) }}">&larr; Prev</a></li>
+            {% endif %}
+
+            {% for page in 1..posts.lastPage %}
+            <li class="{{ posts.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+            </li>
+            {% endfor %}
+
+            {% if posts.lastPage > posts.currentPage %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage+1) }) }}">Next &rarr;</a></li>
+            {% endif %}
+        </ul>
+        {% endif %}
+
+
+
+    </div>
+
+    <div class="col-md-3">
+
+        <form action="{{ searchInput.searchPage | page }}?q={{ query | url_encode(true) }}" method="get">
+            <div class="ss-search-form">
+                <div class="ss-search-form__input">
+                    <input name="q" type="text" placeholder="What are you looking for?" value="{{ searchInput.query }}"
+                        autocomplete="off" autofocus {% if searchInput.useAutoComplete %} data-track-input data-request="{{ searchInput }}::onType"
+                        data-request-before-update="document.getElementById('autocomplete-results').classList.add('ss-search-form__results--visible')"
+                        data-request-update="'{{ searchInput }}::autocomplete': '#autocomplete-results'" {% endif %}>
+                    <button class="ss-search-form__submit" type="submit">Search</button>
+                </div>
+                <div class="ss-search-form__results" id="autocomplete-results"></div>
+            </div>
+        </form>
+
+
+        <br>
+        {% if blogCategories.categories %}
+        <ul class="category-list">
+            {% partial blogCategories ~ "::items" categories = blogCategories.categories currentCategorySlug =
+            blogCategories.currentCategorySlug
+            %}
+        </ul>
+        {% endif %}
+
+
+    </div>
+</div>

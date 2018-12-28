@@ -1,0 +1,49 @@
+[viewBag]
+==
+
+<ul class="{{ class }}">
+    {% for item in items %}
+
+    {% if(item.items) %}
+
+    <li class=" nav-item dropdown" {{ item.isChildActive ? 'child-active' : '' }}>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item.title}}
+            <span class="caret"></span></a>
+
+        <ul class="dropdown-menu">
+            {% for item in item.items %}
+
+            <li class="{{ item.isActive ? 'active' : '' }}">
+                <a href="{{ item.url }}">{{ item.title }}</a>
+            </li>
+
+            {% endfor %}
+
+        </ul>
+    </li>
+
+
+    {% else %}
+
+
+    <li class=" nav-item {{ item.isActive ? 'active' : '' }}">
+        <a href="{{ item.url }}">{{ item.title }}</a>
+    </li>
+
+
+    {% endif %}
+
+
+
+    <!-- <li class="{{ item.isActive or item.isChildActive ? 'active' : '' }} 
+            {{ item.items ? 'dropdown' : '' }}">
+        <a {% if item.items %}class="dropdown-toggle" data-toggle="dropdown" {% endif %} href="{{ item.url }}">
+            {{ item.title }}
+
+            {% if item.items %}<span class="caret"></span>{% endif %}
+        </a>
+    </li> -->
+
+
+    {% endfor %}
+</ul>

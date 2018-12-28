@@ -1,0 +1,19 @@
+1545575661a:1:{s:10:"header.htm";a:6:{s:8:"fileName";s:10:"header.htm";s:7:"content";s:138:"[viewBag]
+==
+<div class="header">
+    
+    <div class="container">
+    
+        {% partial 'navbar' %}
+    
+    </div>
+    
+</div>";s:5:"mtime";i:1545371850;s:6:"markup";s:125:"<div class="header">
+    
+    <div class="container">
+    
+        {% partial 'navbar' %}
+    
+    </div>
+    
+</div>";s:4:"code";N;s:7:"viewBag";a:0:{}}}
